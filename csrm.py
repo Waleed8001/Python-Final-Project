@@ -496,7 +496,7 @@ if 'page' not in st.session_state:
 st.header("Welcome to Our Car Selling Web Page")
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    i = Image.open("ferrariimage.jpeg")
+    i = Image.open("/Users/MUHAMMAD WALEED/Desktop/streamlit tut/streamlitenv/Scripts/ferrariimage.jpeg")
     st.image(i, caption='Ferrari', width=160)
 
 with col2:
