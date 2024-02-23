@@ -494,22 +494,7 @@ if 'page' not in st.session_state:
     st.session_state.page = 1
 
 st.header("Welcome to Our Car Selling Web Page")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    i = Image.open("ferrariimage.jpeg")
-    st.image(i, caption='Ferrari', width=160)
-
-with col2:
-    g = Image.open("lamborghiniimage.jpeg")
-    st.image(g, caption='Lamborghini', width=170)
-
-with col3:
-    t = Image.open("audiimage.jpeg")
-    st.image(t, caption='Audi', width=160)
-
-with col4:
-    y = Image.open("mercedesimage.jpeg")
-    st.image(y, caption='Mercedes', width=170)    
+    
 
 # Display image
 # st.image(image, caption='Example Image', width=200,)
