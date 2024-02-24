@@ -3,7 +3,17 @@ import pandas as pd
 import datetime
 import time
 from PIL import Image
+def home():
+    col1,col2 = ([1,1])
+    with col1:
+        #st.title("Bano Qabil Final Project")
+        image = Image.open("banjaoqabil.jpg") 
+        st.image(image, caption='Example Image', width=140)
+    with col2:
+        st.title("Bano Qabil Final Project")   
+        
 
+    
 def dataentry():
     df = pd.DataFrame({'Car Name': ['None','Lamborghini', 'Mercedes', 'Audi', 'Ferrari']})
     sel = st.selectbox("Which car do you want to buy", df['Car Name'])
@@ -471,7 +481,7 @@ def senddata():
 if 'page' not in st.session_state:
     st.session_state.page = 1
 
-st.header("Welcome to Our Car Selling Web Page")
+st.header("Welcome to Our Car Registration Web Page")
     
 
 # Display image
@@ -480,8 +490,11 @@ st.header("Welcome to Our Car Selling Web Page")
 
 # st.title("Welcome to Our Car Selling Web Page")
 st.sidebar.success("Name of Pages")
-page = st.sidebar.radio("Go to", options=["Data Entry", "Save Data", "Sending Data"])
-if page == "Data Entry":
+page = st.sidebar.radio("Go to", options=["Home","Data Entry", "Save Data", "Contact us","About us"])
+if page == "Home":
+    home()
+    
+elif page == "Data Entry":
     dataentry()
 
 elif page == "Save Data":
