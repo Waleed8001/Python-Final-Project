@@ -3,27 +3,28 @@ import pandas as pd
 import datetime
 import time
 from PIL import Image
-def home():
-    st.title("Bano Qabil")
-    st.write("CIT with Python Programming")
-        
 
-    
 def dataentry():
     df = pd.DataFrame({'Car Name': ['None','Lamborghini', 'Mercedes', 'Audi', 'Ferrari']})
     sel = st.selectbox("Which car do you want to buy", df['Car Name'])
    # col1, col2, col3, col4= st.columns([1,3,1,3])
     
     if sel == 'Lamborghini':
-        col1, col2 = st.columns([1,1])
+        col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Yellow', 'Price': 8520000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
+            k = Image.open("yellowlamborghini.jpeg")
+            st.image(k, caption='Yellow Lamborghini', width = 210)
+        with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 3520000}
             for keys, values in dict1.items():
-                st.write(f"{keys} : {values}")        
+                st.write(f"{keys} : {values}")
+        with col4:
+            k = Image.open("blacklamborghini.jpeg")
+            st.image(k, caption='Black Lamborghini',width = 210)        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -121,15 +122,21 @@ def dataentry():
     
     
     elif sel == 'Mercedes':
-        col1, col2 = st.columns([1,1])
+        col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Green', 'Price': 1220000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
+            k = Image.open("greenmercedes.jpeg")
+            st.image(k, caption='Green Mercedes')
+        with col3:
             dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
             for keys, values in dict1.items():
-                st.write(f"{keys} : {values}")        
+                st.write(f"{keys} : {values}")
+        with col4:
+            k = Image.open("bluemercedes.jpeg")
+            st.image(k, caption='Blue Mercedes')        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -223,16 +230,21 @@ def dataentry():
                     st.session_state.user_data = []
                 st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Blue','Price' : 720000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
     elif sel == 'Audi':
-        col1, col2 = st.columns([1,1])
+        col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Brown', 'Price': 100000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
+            k = Image.open("brownaudi.jpeg")
+            st.image(k, caption='Brown Audi')
+        with col3:
             dict1 = {'Model': 2010, 'Color': 'Yellow', 'Price' : 150000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
-                  
+        with col4:
+            k = Image.open("yellowaudi.jpeg")
+            st.image(k, caption='Yellow Audi')        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -326,16 +338,21 @@ def dataentry():
                     st.session_state.user_data = []
                 st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Yellow','Price' : 150000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
     elif sel == 'Ferrari':
-        col1, col2 = st.columns([1,1])
+        col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Red', 'Price': 9990000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
+            k = Image.open("ferrariimage.jpeg")
+            st.image(k, caption='Red Ferrari')
+        with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 10000000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
-                 
+        with col4:
+            k = Image.open("blackferrari.jpeg")
+            st.image(k, caption='Black Ferrari')        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -476,8 +493,23 @@ def senddata():
 if 'page' not in st.session_state:
     st.session_state.page = 1
 
-st.header("Welcome to Our Car Registration Web Page")
-    
+st.header("Welcome to Our Car Selling Web Page")
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    i = Image.open("ferrariimage.jpeg")
+    st.image(i, caption='Ferrari', width=160)
+
+with col2:
+    g = Image.open("lamborghiniimage.jpeg")
+    st.image(g, caption='Lamborghini', width=170)
+
+with col3:
+    t = Image.open("audiimage.jpeg")
+    st.image(t, caption='Audi', width=160)
+
+with col4:
+    y = Image.open("mercedesimage.jpeg")
+    st.image(y, caption='Mercedes', width=170)    
 
 # Display image
 # st.image(image, caption='Example Image', width=200,)
@@ -485,11 +517,8 @@ st.header("Welcome to Our Car Registration Web Page")
 
 # st.title("Welcome to Our Car Selling Web Page")
 st.sidebar.success("Name of Pages")
-page = st.sidebar.radio("Go to", options=["Home","Data Entry", "Save Data", "Contact us","About us"])
-if page == "Home":
-    home()
-    
-elif page == "Data Entry":
+page = st.sidebar.radio("Go to", options=["Data Entry", "Save Data", "Sending Data"])
+if page == "Data Entry":
     dataentry()
 
 elif page == "Save Data":
