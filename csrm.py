@@ -321,7 +321,7 @@ def dataentry():
                     st.session_state.user_data = []
                 st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Yellow','Price' : 150000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
     elif sel == 'Ferrari':
-        col1, col2, col3, col4= st.columns([1,3,1,3])
+        col1, col2 = st.columns([1,1])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Red', 'Price': 9990000}
             for keys, values in dict1.items():
