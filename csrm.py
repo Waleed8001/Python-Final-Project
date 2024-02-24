@@ -122,7 +122,7 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-           dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
+            dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")        
 
