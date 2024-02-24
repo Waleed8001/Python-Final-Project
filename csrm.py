@@ -16,14 +16,14 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-            k = Image.open("yellowlamborghini.jpeg")
+           # k = Image.open("yellowlamborghini.jpeg")
             st.image(k, caption='Yellow Lamborghini', width = 210)
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 3520000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col4:
-            k = Image.open("blacklamborghini.jpeg")
+         #   k = Image.open("blacklamborghini.jpeg")
             st.image(k, caption='Black Lamborghini',width = 210)        
 
         sel2 = st.checkbox('1990')
@@ -128,14 +128,14 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-            k = Image.open("greenmercedes.jpeg")
+          #  k = Image.open("greenmercedes.jpeg")
             st.image(k, caption='Green Mercedes')
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col4:
-            k = Image.open("bluemercedes.jpeg")
+          #  k = Image.open("bluemercedes.jpeg")
             st.image(k, caption='Blue Mercedes')        
 
         sel2 = st.checkbox('1990')
@@ -236,14 +236,14 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-            k = Image.open("brownaudi.jpeg")
+           # k = Image.open("brownaudi.jpeg")
             st.image(k, caption='Brown Audi')
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Yellow', 'Price' : 150000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col4:
-            k = Image.open("yellowaudi.jpeg")
+         #   k = Image.open("yellowaudi.jpeg")
             st.image(k, caption='Yellow Audi')        
 
         sel2 = st.checkbox('1990')
@@ -344,14 +344,14 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-            k = Image.open("ferrariimage.jpeg")
+          #  k = Image.open("ferrariimage.jpeg")
             st.image(k, caption='Red Ferrari')
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 10000000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col4:
-            k = Image.open("blackferrari.jpeg")
+         #   k = Image.open("blackferrari.jpeg")
             st.image(k, caption='Black Ferrari')        
 
         sel2 = st.checkbox('1990')
@@ -496,19 +496,19 @@ if 'page' not in st.session_state:
 st.header("Welcome to Our Car Selling Web Page")
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    i = Image.open("C:/Users/MUHAMMAD WALEED/Desktop/streamlit tut/streamlitenv/Scripts/ferrariimage.jpeg")
+   # i = Image.open("C:/Users/MUHAMMAD WALEED/Desktop/streamlit tut/streamlitenv/Scripts/ferrariimage.jpeg")
     st.image(i, caption='Ferrari', width=160)
 
 with col2:
-    g = Image.open("lamborghiniimage.jpeg")
+  #  g = Image.open("lamborghiniimage.jpeg")
     st.image(g, caption='Lamborghini', width=170)
 
 with col3:
-    t = Image.open("audiimage.jpeg")
+  #  t = Image.open("audiimage.jpeg")
     st.image(t, caption='Audi', width=160)
 
 with col4:
-    y = Image.open("mercedesimage.jpeg")
+  #  y = Image.open("mercedesimage.jpeg")
     st.image(y, caption='Mercedes', width=170)    
     
 
