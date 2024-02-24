@@ -24,7 +24,7 @@ def dataentry():
                 st.write(f"{keys} : {values}")
         with col4:
             k = Image.open("blacklamborghini.jpeg")
-            st.image(k, caption='Black Lamborghini',width = 230)        
+            st.image(k, caption='Black Lamborghini',width = 250)        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
