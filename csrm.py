@@ -4,13 +4,8 @@ import datetime
 import time
 from PIL import Image
 def home():
-    col1,col2 = ([1,1])
-    with col1:
-        #st.title("Bano Qabil Final Project")
-        image = Image.open("banjaoqabil.jpg") 
-        st.image(image, caption='Example Image', width=140)
-    with col2:
-        st.title("Bano Qabil Final Project")   
+    st.title("Bano Qabil")
+    st.write("CIT with Python Programming")
         
 
     
