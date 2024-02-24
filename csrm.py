@@ -116,21 +116,15 @@ def dataentry():
     
     
     elif sel == 'Mercedes':
-        col1, col2, col3, col4= st.columns([1,3,1,3])
+        col1, col2 = st.columns([1,1])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Green', 'Price': 1220000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-           # k = Image.open("greenmercedes.jpeg")
-            #st.image(k, caption='Green Mercedes')
-        with col3:
-            dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
+           dict1 = {'Model': 2010, 'Color': 'Blue', 'Price' : 720000}
             for keys, values in dict1.items():
-                st.write(f"{keys} : {values}")
-        with col4:
-          #  k = Image.open("bluemercedes.jpeg")
-           # st.image(k, caption='Blue Mercedes')        
+                st.write(f"{keys} : {values}")        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -224,21 +218,16 @@ def dataentry():
                     st.session_state.user_data = []
                 st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Blue','Price' : 720000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
     elif sel == 'Audi':
-        col1, col2, col3, col4= st.columns([1,3,1,3])
+        col1, col2 = st.columns([1,1])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Brown', 'Price': 100000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-           # k = Image.open("brownaudi.jpeg")
-            #st.image(k, caption='Brown Audi')
-        with col3:
             dict1 = {'Model': 2010, 'Color': 'Yellow', 'Price' : 150000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
-        with col4:
-          #  k = Image.open("yellowaudi.jpeg")
-           # st.image(k, caption='Yellow Audi')        
+                  
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -338,15 +327,10 @@ def dataentry():
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-         #   k = Image.open("ferrariimage.jpeg")
-          #  st.image(k, caption='Red Ferrari')
-        with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 10000000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
-        with col4:
-         #   k = Image.open("blackferrari.jpeg")
-          #  st.image(k, caption='Black Ferrari')        
+                 
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
