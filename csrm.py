@@ -17,7 +17,7 @@ def dataentry():
                 st.write(f"{keys} : {values}")
         with col2:
             k = Image.open("yellowlamborghini.jpeg")
-            st.image(k, caption='Yellow Lamborghini', width = 250)
+            st.image(k, caption='Yellow Lamborghini', width = 270)
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 3520000}
             for keys, values in dict1.items():
