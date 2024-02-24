@@ -10,21 +10,15 @@ def dataentry():
    # col1, col2, col3, col4= st.columns([1,3,1,3])
     
     if sel == 'Lamborghini':
-        col1, col2, col3, col4= st.columns([1,3,1,3])
+        col1, col2 = st.columns([1,1])
         with col1:
             dict1 = {'Model': 1990, 'Color': 'Yellow', 'Price': 8520000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col2:
-            #k = Image.open("yellowlamborghini.jpeg")
-            #st.image(k, caption='Yellow Lamborghini', width = 210)
-        with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 3520000}
             for keys, values in dict1.items():
-                st.write(f"{keys} : {values}")
-        with col4:
-           # k = Image.open("blacklamborghini.jpeg")
-            #st.image(k, caption='Black Lamborghini',width = 210)        
+                st.write(f"{keys} : {values}")        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
