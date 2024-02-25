@@ -5,22 +5,34 @@ import time
 from PIL import Image
 from PIL import ImageGrab
 import subprocess
-#from openpyxl.workbook import Workbook
+import sqlite3
 
 def home():
     col1, col2, col3 = st.columns([1,1,1])
     with col1:
         p = Image.open("banoqabil.png")
-        st.image(p, caption=' ', width = 150)
+        st.image(p, caption=' ', width = 178)
 
     with col2:
-        st.title("Al Khidmat Bano Qabil")
+        st.title("Al Khidmat Bano Qabil 2.0")
 
     with col3:
         l = Image.open("pythonlogo1.png")
-        st.image(l, caption=' ', width = 260)
-    st.header('This is a header with a divider', divider='rainbow')
-    st.header('_ Sir.Ghufran Kamal_ is :blue[cool] :sunglasses:')    
+        st.image(l, caption=' ', width = 280)    
+    st.header('Car Registration', divider='rainbow')
+   #col1, col2, = st.columns([1,1])
+    st.header('This is our Final Project of :blue[Python Programing] :sunglasses:')    
+    col1, col2, = st.columns([1,1.5])
+    with col1:
+        st.write("Korangi Campus")
+        st.write("Sir Ghufran Kamal")
+        st.header("Team Members:")
+        st.write("Muhammad Waleed Kamal")
+        st.write("Muhammad Abdul Baseer")
+        st.write("Saif Ul Lah")
+    with col2:
+        kl = Image.open("carreg.jpg")
+        st.image(kl, caption=' ', width = 400)
 
 def dataentry():
     st.header("Welcome to Our Car Selling Web Page")
@@ -483,6 +495,46 @@ def dataentry():
 
         st.session_state.page += 1
 
+def create_table():
+    conn = sqlite3.connect('user_data.db')  # Connect to SQLite database
+    cursor = conn.cursor()
+
+    # Create a table if it doesn't exist
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_data (
+            name TEXT,
+            address TEXT,
+            Color TEXT,
+            car_name TEXT,
+            age INTEGER,
+            date TEXT,
+            cnic TEXT,
+            city TEXT,
+            num TEXT,
+            Price INTEGER,
+            model_year INTEGER
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+# Function to save data to SQLite database
+def save_to_database(data):
+    conn = sqlite3.connect('user_data.db')
+    cursor = conn.cursor()
+
+    # Insert data into the table
+    cursor.execute('''
+        INSERT INTO user_data (name, address, Color, car_name, age, date, cnic, city, num, Price, model_year)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (data['name'], data['address'], data['Color'], data['car name'], data['age'], str(data['date']),
+          data['cnic'], data['city'], data['num'], data['Price'], data['model year']))
+
+    conn.commit()
+    conn.close()
+
+
 def datadisplay():
     st.title("Your Information")
 
@@ -491,7 +543,6 @@ def datadisplay():
         st.dataframe(j)
     # Save DataFrame to Excel file
     #    j.to_excel('D:/user_data.xlsx', index=False)
-
     # Display records on the screen
        # st.title("Saved Records")
        # st.dataframe(j)
@@ -503,7 +554,9 @@ def datadisplay():
     st.write("Are you sure that given information is correct?")
 
     if st.button("Yes"):
-        j.to_excel('user_data.xlsx', index=False)
+        create_table()
+        for _, row in j.iterrows():
+            save_to_database(row.to_dict())
         st.success("Data saved successfully")
         st.write("For Confirm this registration take the mouse cursor on the table and then download this information by click on top right corner of this table and go to Contact us page ")
 
