@@ -503,7 +503,7 @@ def datadisplay():
     st.write("Are you sure that given information is correct?")
 
     if st.button("Yes"):
-        j.to_excel('D:/user_data.xlsx', index=False)
+        j.to_excel('user_data.xlsx', index=False)
         st.success("Data saved successfully")
         st.write("For Confirm this registration take the mouse cursor on the table and then download this information by click on top right corner of this table and go to Contact us page ")
 
