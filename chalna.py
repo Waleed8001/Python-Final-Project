@@ -33,9 +33,10 @@ def home():
     with col2:
         kl = Image.open("carreg.jpg")
         st.image(kl, caption=' ', width = 400)
+    st.header("Go to Data Entry webpage")    
 
 def dataentry():
-    st.header("Welcome to Our Car Selling Web Page")
+    st.header("Welcome to Our Car Registration Web Page")
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         i = Image.open("ferrariimage.jpeg")
@@ -579,6 +580,7 @@ def senddata():
 
 def about():
     st.title("About us")
+    st.write("Our teacher Sir Ghafran Kamal taught us in a very beautiful way and one by one statement. So we understood the programming and it was all possible thanks to him that we made a project in which we register the vehicles of people who are interested in buying vehicles and store it in a database so that people's data is easy to collect and can be deleted or modified or updated at any time.We have used SQLite to store the data. May Allah keep our sir safe and give us long life. Hope you guys enjoy my app and satisfy will also be there and in the future we will make more amazing and enjoyable apps in the same way, let's enjoy it guys. Good Luck")
     
 # Initialize session state
 if 'page' not in st.session_state:
