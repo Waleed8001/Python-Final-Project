@@ -3,8 +3,43 @@ import pandas as pd
 import datetime
 import time
 from PIL import Image
+from PIL import ImageGrab
+import subprocess
+from openpyxl.workbook import Workbook
+
+def home():
+    col1, col2, col3 = st.columns([1,1,1])
+    with col1:
+        p = Image.open("banoqabil.png")
+        st.image(p, caption=' ', width = 150)
+
+    with col2:
+        st.title("Al Khidmat Bano Qabil")
+
+    with col3:
+        l = Image.open("pythonlogo1.png")
+        st.image(l, caption=' ', width = 260)
+    st.header('This is a header with a divider', divider='rainbow')
+    st.header('_ Sir.Ghufran Kamal_ is :blue[cool] :sunglasses:')    
 
 def dataentry():
+    st.header("Welcome to Our Car Selling Web Page")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        i = Image.open("ferrariimage.jpeg")
+        st.image(i, caption='Ferrari', width=160)
+
+    with col2:
+        g = Image.open("lamborghiniimage.jpeg")
+        st.image(g, caption='Lamborghini', width=170)
+
+    with col3:
+        t = Image.open("audiimage.jpeg")
+        st.image(t, caption='Audi', width=160)
+
+    with col4:
+        y = Image.open("mercedesimage.jpeg")
+        st.image(y, caption='Mercedes', width=170)
     df = pd.DataFrame({'Car Name': ['None','Lamborghini', 'Mercedes', 'Audi', 'Ferrari']})
     sel = st.selectbox("Which car do you want to buy", df['Car Name'])
    # col1, col2, col3, col4= st.columns([1,3,1,3])
@@ -450,35 +485,35 @@ def dataentry():
 
 def datadisplay():
     st.title("Your Information")
-  #  if 'sel2' in st.session_state:
+
     if 'user_data' in st.session_state:
-        for user in st.session_state.user_data:
-            col1, col2 = st.columns([1,1])
-            with col1:
-                st.write(f"Name: {user['name']}")
-                st.write(f"CNIC Number: {user['cnic']}")
-                st.write(f"Date of Registratiion: {user['date']}")
-                st.write(f"Address: {user['address']}")
-                st.write(f"Color: {user['Color']}")
-                st.write(f"Model Year: {user['model year']}")
-            with col2:    
-                st.write(f"Age: {user['age']}")
-                st.write(f"City: {user['city']}")
-                st.write(f"Contact Number: {user['num']}")
-                st.write(f"Car: {user['car name']}")
-                st.write(f"Price: {user['Price']}")
-            st.write("---------------------------------------------")             
+        j = pd.DataFrame(st.session_state.user_data)
+        st.dataframe(j)
+    # Save DataFrame to Excel file
+    #    j.to_excel('D:/user_data.xlsx', index=False)
+
+    # Display records on the screen
+       # st.title("Saved Records")
+       # st.dataframe(j)
+
+    # Display a success message
+       # st.success("Data saved successfully as 'user_data.xlsx' and 'user_data.csv'")             
+
     st.write("If you want to add more cars then go back to Data Entry")            
-    st.write("Are you sure that given information is correct ?")
+    st.write("Are you sure that given information is correct?")
+
     if st.button("Yes"):
-        st.write("Take screenshot of it and go to Sending Data page ")
+        j.to_excel('D:/user_data.xlsx', index=False)
+        st.success("Data saved successfully")
+        st.write("For Confirm this registration take the mouse cursor on the table and then download this information by click on top right corner of this table and go to Contact us page ")
+
     if st.button("No"):
         st.write("Refresh this page and enter new information")
 
 
 def senddata():
     st.title("Sending Information")
-    st.write("Please send the screenshot of your information in this Email: ")
+    st.write("Please send the downloaded file in this Email: ")
 
 # Gmail link
     gmail_link = '<a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank">waleedkamal801@gmail.com</a>'
@@ -488,28 +523,13 @@ def senddata():
 
     st.write("For further information or any query, Please contact in this Number :")
     st.write("0324-2923319")
+
+def about():
+    st.title("About us")
     
 # Initialize session state
 if 'page' not in st.session_state:
-    st.session_state.page = 1
-
-st.header("Welcome to Our Car Selling Web Page")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    i = Image.open("ferrariimage.jpeg")
-    st.image(i, caption='Ferrari', width=160)
-
-with col2:
-    g = Image.open("lamborghiniimage.jpeg")
-    st.image(g, caption='Lamborghini', width=170)
-
-with col3:
-    t = Image.open("audiimage.jpeg")
-    st.image(t, caption='Audi', width=160)
-
-with col4:
-    y = Image.open("mercedesimage.jpeg")
-    st.image(y, caption='Mercedes', width=170)    
+    st.session_state.page = 1    
 
 # Display image
 # st.image(image, caption='Example Image', width=200,)
@@ -517,15 +537,22 @@ with col4:
 
 # st.title("Welcome to Our Car Selling Web Page")
 st.sidebar.success("Name of Pages")
-page = st.sidebar.radio("Go to", options=["Data Entry", "Save Data", "Sending Data"])
-if page == "Data Entry":
+page = st.sidebar.radio("Go to", options=["Home","Data Entry", "Save Data", "Contact us","About us"])
+
+if page == "Home":
+    home()
+
+elif page == "Data Entry":
     dataentry()
 
 elif page == "Save Data":
     datadisplay()
 
-elif page == "Sending Data":
-    senddata()    
+elif page == "Contact us":
+    senddata()
+    
+elif page == "About us":
+    about()    
 
 
 footer="""<style>
