@@ -165,7 +165,7 @@ def dataentry():
                 st.write("Go to Save Data page")
                 if 'user_data' not in st.session_state:
                     st.session_state.user_data = []
-                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Black','Price' : 3520000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
+                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Black','Price' : 3520000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 2010})
         
                 
     
@@ -277,7 +277,7 @@ def dataentry():
                 st.write("Go to Save Data page")
                 if 'user_data' not in st.session_state:
                     st.session_state.user_data = []
-                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Blue','Price' : 720000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
+                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Blue','Price' : 720000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 2010})
     elif sel == 'Audi':
         col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
@@ -385,7 +385,7 @@ def dataentry():
                 st.write("Go to Save Data page")
                 if 'user_data' not in st.session_state:
                     st.session_state.user_data = []
-                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Yellow','Price' : 150000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
+                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Yellow','Price' : 150000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 2010})
     elif sel == 'Ferrari':
         col1, col2, col3, col4= st.columns([1,3,1,3])
         with col1:
@@ -493,7 +493,7 @@ def dataentry():
                 st.write("Go to Save Data page")
                 if 'user_data' not in st.session_state:
                     st.session_state.user_data = []
-                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Black', 'Price' : 10000000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 1990})
+                st.session_state.user_data.append({'name': name, 'address':address,'Color': 'Black', 'Price' : 10000000, 'car name': sel, 'age': age, 'date': dt, 'cnic':cnic, 'city': city, 'num': number, 'model year': 2010})
 
         st.session_state.page += 1
 
