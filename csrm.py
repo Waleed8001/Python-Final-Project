@@ -581,11 +581,11 @@ def senddata():
 
 def about():
     st.title("About us")
-    st.write("We have created a project with the help of :green[PYTHON PROGRAMMING] in which to register the car for those who want to buy it, the user gives us all the details, the user has to enter the correct details. The number should specifically correct, so that in case of any problems, they can be contacted. It is important to enter the date of registration correctly so that we can quickly deliver the user\'s vehicles based on this date.")
+    st.write("We have created a project with the help of :green[PYTHON PROGRAMMING] in which to register the car for those who want to buy it, the user gives us all the details, the user has to enter the correct details. The number should specifically be correct, so that in case of any problems, they can be contacted. It is important to enter the date of registration correctly so that we can quickly deliver the user\'s vehicles based on this date.")
     st.write("We can use this app especially in the car showroom in which people come to buy the cars and those who don\'t want to buy at that time then we can register them. The user should enter correct detail . Otherwise, the registration may be cancelled.")
-    st.write("When user has enter detail then we store it in a database so that people\'s data is easy to collect and can be deleted or modified or updated at any time. We have used :red[SQLite] to store the data.")
-    st.write("Our teacher Sir Ghufran Kamal taught us in a very beautiful way and one by one statement. So we understood the programming and it was all possible, thanks to him. May Allah keep our sir safe and give us long life.")
-    st.write("Hope you guys enjoy my app and satisfy will also be there and in the future we will make more amazing and enjoyable apps in the same way. Keep fresh, healthy and happy, let\'s enjoy it guys.")
+    st.write("When user has enter detail then we save them in a database so that people\'s data is easy to collect and can be deleted or modified or updated at any time. We have used :red[SQLite] to store the data.")
+    st.write("Our teacher Sir Ghufran Kamal taught us in a very good way and each statement one by one. So we understood the programming and it was all possible, thanks to him. May Allah keep our sir safe and give us long life.")
+    st.write("Hope you guys enjoy my app and satisfy with it and Insha Allah in the future we will make more amazing and enjoyable apps in the same way. Keep fresh, healthy and happy, let\'s enjoy it guys.")
     st.write("Good Luck 😊")
              
 # Initialize session state
