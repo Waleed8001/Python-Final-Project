@@ -3,8 +3,56 @@ import pandas as pd
 import datetime
 import time
 from PIL import Image
+from PIL import ImageGrab
+import subprocess
+import sqlite3
+
+def home():
+    col1, col2, col3 = st.columns([1,1,1])
+    with col1:
+        p = Image.open("banoqabil.png")
+        st.image(p, caption=' ', width = 178)
+
+    with col2:
+        st.title("Al Khidmat Bano Qabil 2.0")
+
+    with col3:
+        l = Image.open("pythonlogo1.png")
+        st.image(l, caption=' ', width = 280)    
+    st.header('Car Registration', divider='rainbow')
+   #col1, col2, = st.columns([1,1])
+    st.header('This is our Final Project of :blue[Python Programing] :sunglasses:')    
+    col1, col2, = st.columns([1,1.8])
+    with col1:
+        st.write("Korangi Campus")
+        st.write("Sir Ghufran Kamal")
+        st.header("Team Members:")
+        st.write("1. Muhammad Waleed Kamal")
+        st.write("2. Muhammad Abdul Baseer")
+        st.write("3. Saif Ul Lah")
+    with col2:
+        kl = Image.open("carreg.jpg")
+        st.image(kl, caption=' ', width = 440)
+    st.header("Go to Data Entry webpage")    
 
 def dataentry():
+    st.header("Welcome to Our Car Registration Web Page")
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        i = Image.open("ferrariimage.jpeg")
+        st.image(i, caption='Ferrari', width=160)
+
+    with col2:
+        g = Image.open("lamborghiniimage.jpeg")
+        st.image(g, caption='Lamborghini', width=170)
+
+    with col3:
+        t = Image.open("audiimage.jpeg")
+        st.image(t, caption='Audi', width=160)
+
+    with col4:
+        y = Image.open("mercedesimage.jpeg")
+        st.image(y, caption='Mercedes', width=170)
     df = pd.DataFrame({'Car Name': ['None','Lamborghini', 'Mercedes', 'Audi', 'Ferrari']})
     sel = st.selectbox("Which car do you want to buy", df['Car Name'])
    # col1, col2, col3, col4= st.columns([1,3,1,3])
@@ -17,14 +65,14 @@ def dataentry():
                 st.write(f"{keys} : {values}")
         with col2:
             k = Image.open("yellowlamborghini.jpeg")
-            st.image(k, caption='Yellow Lamborghini', width = 260)
+            st.image(k, caption='Yellow Lamborghini', width = 210)
         with col3:
             dict1 = {'Model': 2010, 'Color': 'Black', 'Price' : 3520000}
             for keys, values in dict1.items():
                 st.write(f"{keys} : {values}")
         with col4:
             k = Image.open("blacklamborghini.jpeg")
-            st.image(k, caption='Black Lamborghini',width = 250)        
+            st.image(k, caption='Black Lamborghini',width = 210)        
 
         sel2 = st.checkbox('1990')
         sel3 = st.checkbox('2010')
@@ -448,37 +496,78 @@ def dataentry():
 
         st.session_state.page += 1
 
+def create_table():
+    conn = sqlite3.connect('user_data.db')  # Connect to SQLite database
+    cursor = conn.cursor()
+
+    # Create a table if it doesn't exist
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS user_data (
+            name TEXT,
+            address TEXT,
+            Color TEXT,
+            car_name TEXT,
+            age INTEGER,
+            date TEXT,
+            cnic TEXT,
+            city TEXT,
+            num TEXT,
+            Price INTEGER,
+            model_year INTEGER
+        )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+# Function to save data to SQLite database
+def save_to_database(data):
+    conn = sqlite3.connect('user_data.db')
+    cursor = conn.cursor()
+
+    # Insert data into the table
+    cursor.execute('''
+        INSERT INTO user_data (name, address, Color, car_name, age, date, cnic, city, num, Price, model_year)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (data['name'], data['address'], data['Color'], data['car name'], data['age'], str(data['date']),
+          data['cnic'], data['city'], data['num'], data['Price'], data['model year']))
+
+    conn.commit()
+    conn.close()
+
+
 def datadisplay():
     st.title("Your Information")
-  #  if 'sel2' in st.session_state:
+
     if 'user_data' in st.session_state:
-        for user in st.session_state.user_data:
-            col1, col2 = st.columns([1,1])
-            with col1:
-                st.write(f"Name: {user['name']}")
-                st.write(f"CNIC Number: {user['cnic']}")
-                st.write(f"Date of Registratiion: {user['date']}")
-                st.write(f"Address: {user['address']}")
-                st.write(f"Color: {user['Color']}")
-                st.write(f"Model Year: {user['model year']}")
-            with col2:    
-                st.write(f"Age: {user['age']}")
-                st.write(f"City: {user['city']}")
-                st.write(f"Contact Number: {user['num']}")
-                st.write(f"Car: {user['car name']}")
-                st.write(f"Price: {user['Price']}")
-            st.write("---------------------------------------------")             
+        j = pd.DataFrame(st.session_state.user_data)
+        st.dataframe(j)
+    # Save DataFrame to Excel file
+    #    j.to_excel('D:/user_data.xlsx', index=False)
+    # Display records on the screen
+       # st.title("Saved Records")
+       # st.dataframe(j)
+
+    # Display a success message
+       # st.success("Data saved successfully as 'user_data.xlsx' and 'user_data.csv'")             
+
     st.write("If you want to add more cars then go back to Data Entry")            
-    st.write("Are you sure that given information is correct ?")
+    st.write("Are you sure that given information is correct?")
+
     if st.button("Yes"):
-        st.write("Take screenshot of it and go to Sending Data page ")
+        create_table()
+        for _, row in j.iterrows():
+            save_to_database(row.to_dict())
+        st.success("Data saved successfully")
+        st.write("For Confirm this registration take the mouse cursor on the table and then download this information by click on top right corner of this table and go to Contact us page ")
+
     if st.button("No"):
         st.write("Refresh this page and enter new information")
 
 
 def senddata():
     st.title("Sending Information")
-    st.write("Please send the screenshot of your information in this Email: ")
+    st.write("Please send the downloaded file in this Email: ")
 
 # Gmail link
     gmail_link = '<a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank">waleedkamal801@gmail.com</a>'
@@ -488,28 +577,19 @@ def senddata():
 
     st.write("For further information or any query, Please contact in this Number :")
     st.write("0324-2923319")
-    
+
+def about():
+    st.title("About us")
+    st.write("We have created a project with the help of :green[PYTHON PROGRAMMING] in which to register the car for those who want to buy it, the user gives us all the details, the user has to enter the correct details. The number should specifically correct, so that in case of any problems, they can be contacted. It is important to enter the date of registration correctly so that we can quickly deliver the user\'s vehicles based on this date.")
+    st.write("We can use this app especially in the car showroom in which people come to buy the cars and those who don\'t want to buy at that time then we can register them. The user should enter correct detail . Otherwise, the registration may be cancelled.")
+    st.write("When user has enter detail then we store it in a database so that people\'s data is easy to collect and can be deleted or modified or updated at any time. We have used :red[SQLite] to store the data.")
+    st.write("Our teacher Sir Ghafran Kamal taught us in a very beautiful way and one by one statement. So we understood the programming and it was all possible, thanks to him. May Allah keep our sir safe and give us long life.")
+    st.write("Hope you guys enjoy my app and satisfy will also be there and in the future we will make more amazing and enjoyable apps in the same way. Keep fresh, healthy and happy, let\'s enjoy it guys.")
+    st.write("Good Luck 😊")
+             
 # Initialize session state
 if 'page' not in st.session_state:
-    st.session_state.page = 1
-
-st.header("Welcome to Our Car Selling Web Page")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    i = Image.open("ferrariimage.jpeg")
-    st.image(i, caption='Ferrari', width=160)
-
-with col2:
-    g = Image.open("lamborghiniimage.jpeg")
-    st.image(g, caption='Lamborghini', width=170)
-
-with col3:
-    t = Image.open("audiimage.jpeg")
-    st.image(t, caption='Audi', width=160)
-
-with col4:
-    y = Image.open("mercedesimage.jpeg")
-    st.image(y, caption='Mercedes', width=170)    
+    st.session_state.page = 1    
 
 # Display image
 # st.image(image, caption='Example Image', width=200,)
@@ -517,15 +597,22 @@ with col4:
 
 # st.title("Welcome to Our Car Selling Web Page")
 st.sidebar.success("Name of Pages")
-page = st.sidebar.radio("Go to", options=["Data Entry", "Save Data", "Sending Data"])
-if page == "Data Entry":
+page = st.sidebar.radio("Go to", options=["Home","Data Entry", "Save Data", "Contact us","About us"])
+
+if page == "Home":
+    home()
+
+elif page == "Data Entry":
     dataentry()
 
 elif page == "Save Data":
     datadisplay()
 
-elif page == "Sending Data":
-    senddata()    
+elif page == "Contact us":
+    senddata()
+    
+elif page == "About us":
+    about()    
 
 
 footer="""<style>
