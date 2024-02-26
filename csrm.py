@@ -567,7 +567,7 @@ def datadisplay():
 
 
 def senddata():
-    st.title("Sending Information")
+    st.title("Contact Us")
     st.write("Please send the downloaded file in this Email: ")
 
 # Gmail link
