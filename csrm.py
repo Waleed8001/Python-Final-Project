@@ -33,8 +33,9 @@ def home():
     with col2:
         kl = Image.open("carreg.jpg")
         st.image(kl, caption=' ', width = 440)
+    st.write("Here you can register your car thats you like, only follow the steps that we have provided.")    
     st.header("Go to Data Entry webpage")    
-
+    
 def dataentry():
     st.header("Welcome to Our Car Registration Web Page")
     col1, col2, col3, col4 = st.columns(4)
